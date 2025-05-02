@@ -11,3 +11,6 @@ export GOPATH="$XDG_DATA_HOME"/go
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 
 . "$CARGO_HOME/env"
+
+# Some other stuff
+export DEV_ENV=$HOME/personal/dev
