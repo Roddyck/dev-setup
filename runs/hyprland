@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+sudo pacman -S --noconfirm nvidia-utils egl-wayland
+sudo pacman -S --noconfirm --needed hyprland swaync
+
+if [ ! -f /etc/modprobe.d/nvidia.conf ]; then
+    touch /etc/modprobe.d/nvidia.conf
+else
+    echo "nvidia.conf already exists"
+    exit 0
+fi
+
+msg="options nvidia_drm modeset=1"
+echo $msg | sudo tee /etc/modprobe.d/nvidia.conf
+
+# TODO: add some more nvidia configuration, if i don't wanna do it manually
