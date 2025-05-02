@@ -1,0 +1,91 @@
+# Enable colors
+autoload -U colors && colors
+source ~/.zshenv
+
+# History in cache directory:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.cache/zsh/history
+
+# Basic auto/tab complete:
+autoload -U compinit && compinit -u
+zstyle ':completion:*' menu select
+# Auto complete with case insenstivity
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)		# Include hidden files
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# Enable searching through history
+bindkey '^R' history-incremental-pattern-search-backward
+
+# search based on entered text
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# ENV
+export PATH="/home/roddyk/.local/scripts/:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
+export PATH="/home/roddyk/TeXmacs/:$PATH"
+export PATH="/home/roddyk/.local/bin:$PATH"
+
+alias vim="nvim"
+alias tmux="tmux -2"
+alias asdf="setxkbmap -layout prog-qwerty,ru && setxkbmap -option 'grp:win_space_toggle' && setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape'"
+
+alias ls="ls --color=tty"
+alias lsa="ls -lah"
+
+alias g="git"
+alias gc="git commit"
+alias ga="git add"
+alias gst="git status"
+
+# find projects
+bindkey -s ^f "tmux-sessionizer\n"
+
+addToPath() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$PATH:$1
+    fi
+}
+
+addToPathFront() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$1:$PATH
+    fi
+}
+
+addToPathFront $HOME/.zig
+
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+alias air='$(go env GOPATH)/bin/air'
+
+# fzf theme (catpuccin mocha)
+#export FZF_DEFAULT_OPTS=" \
+#--color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
+#--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+#--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+#--multi"
+
+# fzf rose-pine
+export FZF_DEFAULT_OPTS="
+	--color=fg:#908caa,bg:#191724,hl:#ebbcba
+	--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
+	--color=border:#403d52,header:#31748f,gutter:#191724
+	--color=spinner:#f6c177,info:#9ccfd8
+	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
