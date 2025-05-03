@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-sudo pacman -S --noconfirm stow
-git clone https://github.com/Roddyck/.dotfiles.git $HOME/.dotfiles
-cd $HOME/.dotfiles
-stow */
