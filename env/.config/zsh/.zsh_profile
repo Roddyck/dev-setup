@@ -71,6 +71,7 @@ addToPathFront() {
 }
 
 addToPathFront $HOME/.zig
+addToPathFront $HOME/.local/share/npm/bin/
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 alias air='$(go env GOPATH)/bin/air'
