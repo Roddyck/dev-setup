@@ -2,3 +2,18 @@
 
 sudo pacman -S --noconfirm --needed tldr fzf go base-devel sof-firmware brightnessctl fastfetch
 yay -S --needed kanata-bin
+
+if [ -z $(getent group uinput) ]; then
+    sudo groupadd uinput
+    sudo usermod -aG input $USER
+    sudo usermod -aG uinput $USER
+else
+    echo "group already exists"
+fi
+
+msg="KERNEL==\"uinput\", MODE=\"0660\", GROUP=\"uinput\", OPTIONS+=\"static_node=uinput\""
+if [ ! -f /etc/udev/rules.d/99-input.rules ]; then
+    echo $msg | sudo tee /etc/udev/rules.d/99-input.rules
+else
+    echo "99-input.rules exists"
+fi

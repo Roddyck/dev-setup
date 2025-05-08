@@ -43,7 +43,7 @@ button:hover {
 
 #workspaces button {
     margin: 0 0px;
-    padding: 0 6px;
+    padding: 0 3px;
     color: @text;
     background: transparent;
     border-radius: 5px;
