@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-sudo pacman -S --noconfirm --needed tldr fzf go base-devel
-yay -S kanata-bin
+sudo pacman -S --noconfirm --needed tldr fzf go base-devel sof-firmware brightnessctl fastfetch
+yay -S --needed kanata-bin
