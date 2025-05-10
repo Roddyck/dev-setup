@@ -85,32 +85,29 @@ button:hover {
 
 #clock {
     /* background-color: #2ac3de; */
-    color: #24283b;
+    color: @yellow;
     padding: 0 5px;
     margin: 0px 0;
-    background: @aqua;
-    background: linear-gradient(135deg, @yellow 0%, @orange 100%);
+    background: @bg;
 }
 
 #custom-icon {
     color: #24283b;
     margin-left: 6px;
     padding-left: 5px;
-    background: rgb(42,195,222);
-    background: linear-gradient(135deg, @yellow 0%, @orange 100%);
+    background: @orange;
 }
 
 #mpris {
-    color: #24283b;
+    color: @orange;
     padding: 0px 5px;
     margin: 2px 2px;
-    background: rgb(42,195,222);
-    background: linear-gradient(135deg, @yellow 0%, @orange 100%);
+    background: @bg;
 }
 
 #battery {
-    background-color: @red;
-    color: #24283b;
+    background-color: @bg;
+    color: @red;
     padding: 0 5px;
     margin: 0px 0px;
 }
@@ -126,16 +123,15 @@ button:hover {
 #custom-notifications {
     margin: 2px 6px;
     padding: 0 0 0 1px;
-    color: #24283b;
+    color: @fg;
     background-color: @bg;
     min-width: 20px;
-    background: rgb(42,195,222);
-    background: linear-gradient(135deg, @blue 0%, @aqua 100%);
+    background: @bg;
 }
 
 #battery.charging, #battery.plugged {
-    color: #24283b;
-    background-color: #bb9af7;
+    color: @red;
+    background-color: @bg;
     padding: 0 5px;
     margin: 0px 2px;
 }
@@ -164,19 +160,17 @@ label:focus {
 
 #cpu {
     background-color: #e0af68;
-    color: #24283b;
+    color: @blue;
     padding: 0 5px;
-    background: rgb(42,195,222);
-    background: linear-gradient(135deg, @blue 0%, @aqua 100%);
+    background: @bg;
     margin: 0px 2px;
 }
 
 #memory {
     background-color: #2ac3de;
-    color: #24283b;
+    color: @aqua;
     padding: 0 5px;
-    background: rgb(158,206,106);
-    background: linear-gradient(135deg, @yellow 0%, @orange 100%);
+    background: @bg;
     margin: 0px 2px;
 }
 
@@ -202,16 +196,15 @@ label:focus {
 
 #pulseaudio {
     background-color: #2ac3de;
-    color: #24283b;
+    color: @green;
     padding: 0 5px;
     margin: 0px 2px;
-    background: rgb(247,118,142);
-    background: linear-gradient(135deg, @blue 0%, @aqua 100%);
+    background: @bg;
 }
 
 #pulseaudio.muted {
-    background-color: #73daca;
-    color: #24283b;
+    background-color: @bg;
+    color: @fg;
     padding: 0 5px;
     margin: 0px 2px;
 }
@@ -235,8 +228,7 @@ label:focus {
     color: #24283b;
     padding: 0 5px;
     margin: 0px 2px;
-    background: @pine;
-    background: linear-gradient(135deg, @blue 0%, @yellow 100%);
+    background: @bg;
 }
 
 #tray > .passive {
