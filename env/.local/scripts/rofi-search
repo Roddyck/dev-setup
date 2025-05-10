@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SEARCH_ENGINE="https://duckduckgo.com/?q="
+BROWSER="zen-browser"
+
+rofi_theme="$HOME/.config/rofi/config-search.rasi"
+
+# Kill Rofi if already running before execution
+if pgrep -x "rofi" >/dev/null; then
+    pkill rofi
+fi
+
+INPUT=$(rofi -dmenu -config "$rofi_theme")
+
+if [ -z "$INPUT" ]; then
+    exit 0
+fi
+
+$BROWSER "${SEARCH_ENGINE}${INPUT}" &
