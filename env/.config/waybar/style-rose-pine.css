@@ -1,4 +1,4 @@
-@import "./gruvbox.css";
+@import "./rose-pine.css";
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
@@ -44,19 +44,19 @@ button:hover {
 #workspaces button {
     margin: 0 0px;
     padding: 0 3px;
-    color: @fg;
+    color: @text;
     background: transparent;
     border-radius: 5px;
 }
 
 #workspaces button.active {
-    color: @fg;
-    background-color: @blue;
+    color: @rose;
+    background-color: @pine;
     border-radius: 5px;
 }
 
 #workspaces button.urgent {
-    background-color: @red;
+    background-color: @love;
 }
 
 #mode {
@@ -68,7 +68,7 @@ button:hover {
 
 #workspaces {
     margin: 0px 4px;
-    background: @bg;
+    background: @base;
     border-radius: 5px;
 }
 
@@ -88,8 +88,8 @@ button:hover {
     color: #24283b;
     padding: 0 5px;
     margin: 0px 0;
-    background: @aqua;
-    background: linear-gradient(135deg, @yellow 0%, @orange 100%);
+    background: @pine;
+    background: linear-gradient(135deg, @rose 0%, @love 100%);
 }
 
 #custom-icon {
@@ -97,7 +97,7 @@ button:hover {
     margin-left: 6px;
     padding-left: 5px;
     background: rgb(42,195,222);
-    background: linear-gradient(135deg, @yellow 0%, @orange 100%);
+    background: linear-gradient(135deg, @rose 0%, @love 100%); 
 }
 
 #mpris {
@@ -105,11 +105,11 @@ button:hover {
     padding: 0px 5px;
     margin: 2px 2px;
     background: rgb(42,195,222);
-    background: linear-gradient(135deg, @yellow 0%, @orange 100%);
+    background: linear-gradient(135deg, @rose 0%, @love 100%);
 }
 
 #battery {
-    background-color: @red;
+    background-color: @love;
     color: #24283b;
     padding: 0 5px;
     margin: 0px 0px;
@@ -127,10 +127,10 @@ button:hover {
     margin: 2px 6px;
     padding: 0 0 0 1px;
     color: #24283b;
-    background-color: @bg;
+    background-color: @base;
     min-width: 20px;
     background: rgb(42,195,222);
-    background: linear-gradient(135deg, @blue 0%, @aqua 100%);
+    background: linear-gradient(135deg, @foam 0%, @iris 100%);
 }
 
 #battery.charging, #battery.plugged {
@@ -167,7 +167,7 @@ label:focus {
     color: #24283b;
     padding: 0 5px;
     background: rgb(42,195,222);
-    background: linear-gradient(135deg, @blue 0%, @aqua 100%);
+    background: linear-gradient(135deg, @pine 0%, @iris 100%);
     margin: 0px 2px;
 }
 
@@ -176,7 +176,7 @@ label:focus {
     color: #24283b;
     padding: 0 5px;
     background: rgb(158,206,106);
-    background: linear-gradient(135deg, @yellow 0%, @orange 100%);
+    background: linear-gradient(135deg, @rose 0%, @love 100%);
     margin: 0px 2px;
 }
 
@@ -206,7 +206,7 @@ label:focus {
     padding: 0 5px;
     margin: 0px 2px;
     background: rgb(247,118,142);
-    background: linear-gradient(135deg, @blue 0%, @aqua 100%);
+    background: linear-gradient(135deg, @pine 0%, @iris 100%);
 }
 
 #pulseaudio.muted {
@@ -236,7 +236,7 @@ label:focus {
     padding: 0 5px;
     margin: 0px 2px;
     background: @pine;
-    background: linear-gradient(135deg, @blue 0%, @yellow 100%);
+    background: linear-gradient(135deg, @iris 0%, @gold 100%);
 }
 
 #tray > .passive {

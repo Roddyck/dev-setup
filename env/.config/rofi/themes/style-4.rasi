@@ -18,7 +18,8 @@ configuration {
 }
 
 /* ---- Load wallust colors ---- */
-@theme "~/.config/rofi/rose-pine.rasi"
+/* @theme "~/.config/rofi/rose-pine.rasi" */
+@theme "~/.config/rofi/gruvbox.rasi"
 
 /* ---- Global Properties ---- */
 * {
