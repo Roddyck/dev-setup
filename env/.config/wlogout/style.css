@@ -1,80 +1,81 @@
 window {
-    font-size: 16pt;
-    color: #e0def4; /* text */
-    background-color: rgba(30, 30, 46, 0.6);
+  font-family: JetBrainsMonoNerdFont;
+  font-size: 14pt;
+  color: #ebdbb2; /* text */
+  background-color: rgba(40, 40, 40, 0.76);
 }
 
 button {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20%;
-    background-color: rgba(200, 220, 255, 0);
-    animation: gradient_f 10s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
-    border-radius: 80px;
-	border:0px;
-    outline-style: none;
-}
-
-button:focus {
-    background-size: 50%;
-	border: 0px;
-    outline-style: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  border-style: solid;
+  border-radius: 4px;
+  border-width: 2px;
+  border-color: #ebdbb2;
+  background-color: rgba(40, 40, 40, 0.76);
+  margin: 10px;
+  transition:
+    box-shadow 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
 }
 
 button:hover {
-    background-color: #403d52; 
-    color: #1e1e2e;
-    background-size: 50%;
-    margin: 30px;
-    border-radius: 80px;
-	outline-style: none;
+  background-color: rgba(104, 157, 106, 0.92);
+  color: #282828;
 }
 
-/* Adjust the size of the icon or content inside the button */
-button span {
-    font-size: 1.2em; /* Increase the font size */
+button:focus {
+  background-color: #ebdbb2;
+  color: #282828;
 }
-
 
 #lock {
-    background-image: image(url("./icons/lock.png"));
+  background-image: image(url("./icons/gruvbox/lock.png"));
+}
+#lock:focus {
+  background-image: image(url("./icons/gruvbox/lock-hover.png"));
 }
 #lock:hover {
-    background-image: image(url("./icons/lock-hover.png"));
+  background-image: image(url("./icons/gruvbox/lock-hover.png"));
 }
 
 #logout {
-    background-image: image(url("./icons/logout.png"));
+  background-image: image(url("./icons/gruvbox/logout.png"));
+}
+#logout:focus {
+  background-image: image(url("./icons/gruvbox/logout-hover.png"));
 }
 #logout:hover {
-    background-image: image(url("./icons/logout-hover.png"));
+  background-image: image(url("./icons/gruvbox/logout-hover.png"));
 }
 
 #suspend {
-    background-image: image(url("./icons/sleep.png"));
+  background-image: image(url("./icons/gruvbox/sleep.png"));
+}
+#suspend:focus {
+  background-image: image(url("./icons/gruvbox/sleep-hover.png"));
 }
 #suspend:hover {
-    background-image: image(url("./icons/sleep-hover.png"));
+  background-image: image(url("./icons/gruvbox/sleep-hover.png"));
 }
 
 #shutdown {
-    background-image: image(url("./icons/power.png"));
+  background-image: image(url("./icons/gruvbox/power.png"));
+}
+#shutdown:focus {
+  background-image: image(url("./icons/gruvbox/power-hover.png"));
 }
 #shutdown:hover {
-    background-image: image(url("./icons/power-hover.png"));
+  background-image: image(url("./icons/gruvbox/power-hover.png"));
 }
 
 #reboot {
-    background-image: image(url("./icons/restart.png"));
+  background-image: image(url("./icons/gruvbox/restart.png"));
+}
+#reboot:focus {
+  background-image: image(url("./icons/gruvbox/restart-hover.png"));
 }
 #reboot:hover {
-    background-image: image(url("./icons/restart-hover.png"));
-}
-
-#hibernate {
-    background-image: image(url("./icons/hibernate.png"));
-}
-#hibernate:hover {
-    background-image: image(url("./icons/hibernate-hover.png"));
+  background-image: image(url("./icons/gruvbox/restart-hover.png"));
 }
