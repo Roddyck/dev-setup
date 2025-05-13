@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "bottom",
     "height": 24,
-    "modules-left": ["custom/icon", "hyprland/workspaces","mpris",],
+    "modules-left": ["hyprland/workspaces","mpris",],
     "modules-center": [ "clock"],
     "modules-right": [ "pulseaudio", "memory", "cpu", "battery", "tray", "custom/notifications"],
     "disable-click": true,
