@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [[ $(pwd) == $HOME/personal ]]; then
+    clear
+    return
+fi
 tmux neww -dn term
 vim .
 clear
