@@ -55,6 +55,9 @@ alias gc="git commit"
 alias ga="git add"
 alias gst="git status"
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 # find projects
 bindkey -s ^f "tmux-sessionizer\n"
 
