@@ -1,6 +1,7 @@
-theme = GruvboxDark
+theme = GruvboxDarkHard
 background-opacity = 0.70
 background = 000000
+background-blur = false
 font-family = JetBrainsMono Nerd Font
 
 shell-integration-features = no-cursor,title
