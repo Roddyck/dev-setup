@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/tmux-sessionizer"
 CONFIG_FILE="$CONFIG_DIR/tmux-sessionizer.conf"
+CONFIG_HYDRATE_DEFAULT="$CONFIG_DIR/tmux-sessionizer-hydrate.conf"
 
 if [[ -f "$CONFIG_FILE" ]]; then
     source "$CONFIG_FILE"
@@ -33,8 +34,8 @@ has_session() {
 hydrate() {
     if [ -f $2/.tmux-sessionizer ]; then
         tmux send-keys -t "$1" "source $2/.tmux-sessionizer" ^M
-    elif [ -f $HOME/.tmux-sessionizer ]; then
-        tmux send-keys -t "$1" "source $HOME/.tmux-sessionizer" ^M
+    elif [[ -f "$CONFIG_HYDRATE_DEFAULT"  ]]; then
+        tmux send-keys -t "$1" "source $CONFIG_HYDRATE_DEFAULT" ^M
     fi
 }
 
