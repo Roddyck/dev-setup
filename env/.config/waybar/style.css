@@ -5,6 +5,7 @@
     border-radius: 10px;
     font-family: JetBrainsMono NFP;
     font-size: 13px;
+    margin: 2px 0px;
 }
 
 window#waybar {
@@ -67,17 +68,15 @@ button:hover {
 }
 
 #workspaces {
-    margin: 0px 4px;
+    margin: 0 4px;
     background: @bg;
     border-radius: 5px;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
-    margin-left: 6px;
+    margin-left: 0.5rem;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
 }
@@ -87,7 +86,7 @@ button:hover {
     /* background-color: #2ac3de; */
     color: @yellow;
     padding: 0 5px;
-    margin: 0px 0;
+    margin: 0 0;
     background: @bg;
 }
 
@@ -100,8 +99,8 @@ button:hover {
 
 #mpris {
     color: @orange;
-    padding: 0px 5px;
-    margin: 2px 2px;
+    padding: 0 5px;
+    margin: 0 2px;
     background: @bg;
 }
 
@@ -109,7 +108,7 @@ button:hover {
     background-color: @bg;
     color: @red;
     padding: 0 5px;
-    margin: 0px 0px;
+    margin: 0 0px;
 }
 
 #custom-weather {
@@ -121,7 +120,7 @@ button:hover {
     background: linear-gradient(135deg, rgba(255,158,100,1) 0%, rgba(247,118,142,1) 100%);
 }
 #custom-notifications {
-    margin: 2px 6px;
+    margin-right: 0.5rem;
     padding: 0 0 0 1px;
     color: @fg;
     background-color: @bg;
@@ -133,7 +132,7 @@ button:hover {
     color: @red;
     background-color: @bg;
     padding: 0 5px;
-    margin: 0px 2px;
+    margin: 0 2px;
 }
 
 @keyframes blink {
@@ -227,7 +226,7 @@ label:focus {
     background-color: #2980b9;
     color: #24283b;
     padding: 0 5px;
-    margin: 0px 2px;
+    margin: 0 2px;
     background: @bg;
 }
 
