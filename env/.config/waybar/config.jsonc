@@ -1,10 +1,30 @@
 {
     "layer": "top",
     "position": "top",
-    "modules-left": ["hyprland/workspaces","mpris",],
-    "modules-center": [ "clock"],
-    "modules-right": [ "pulseaudio", "memory", "cpu", "battery", "tray", "custom/notifications"],
+    "modules-left": ["custom/power", "clock"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["pulseaudio", "memory", "cpu", "battery", "tray", "custom/notifications"],
     "disable-click": true,
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": "",
+            "empty": "",
+        },
+        "persistent-workspaces": {
+            "*": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+            ]
+        }
+    },
 
     "tray": {
         // "icon-size": 21,
@@ -24,6 +44,12 @@
             "playing": " "
         },
         "title-len": 10
+    },
+
+    "custom/power": {
+        "tooltip": false,
+        "on-click": "sh -c ~/.local/scripts/Wlogout.sh",
+        "format": ""
     },
 
     "custom/icon": {
@@ -65,7 +91,7 @@
     },
 
     "clock": {
-        "format": "{:%H:%M:%S - %a, %d/%m/%Y}",
+        "format": "{:%I:%M %p}",
         "interval": 1,
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {

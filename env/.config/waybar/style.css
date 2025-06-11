@@ -45,14 +45,26 @@ button:hover {
 #workspaces button {
     margin: 0 0px;
     padding: 0 3px;
-    color: @fg;
+    color: rgba(251, 73, 52, 0.4);
     background: transparent;
     border-radius: 5px;
 }
 
 #workspaces button.active {
-    color: @fg;
-    background-color: @blue;
+    color: @red;
+    background-color: @bg;
+    border-radius: 5px;
+}
+
+#workspaces button.empty {
+    color: @bg1;
+    background-color: @bg;
+    border-radius: 5px;
+}
+
+#workspaces button.empty.active {
+    color: @red;
+    background-color: @bg;
     border-radius: 5px;
 }
 
@@ -86,7 +98,7 @@ button:hover {
     /* background-color: #2ac3de; */
     color: @yellow;
     padding: 0 5px;
-    margin: 0 0;
+    margin: 0 2px;
     background: @bg;
 }
 
@@ -119,12 +131,23 @@ button:hover {
     background: rgb(255,158,100);
     background: linear-gradient(135deg, rgba(255,158,100,1) 0%, rgba(247,118,142,1) 100%);
 }
+
 #custom-notifications {
     margin-right: 0.5rem;
     padding: 0 0 0 1px;
     color: @fg;
     background-color: @bg;
     min-width: 20px;
+    background: @bg;
+}
+
+#custom-power {
+    margin-left: 0.5rem;
+    margin-right: 2px;
+    padding: 0 0 0 1px;
+    color: @fg;
+    min-width: 20px;
+    background-color: @bg;
     background: @bg;
 }
 
