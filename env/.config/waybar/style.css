@@ -48,6 +48,14 @@ button:hover {
     color: rgba(251, 73, 52, 0.4);
     background: transparent;
     border-radius: 5px;
+    transition: all .5s ease;
+}
+
+#workspaces button:hover {
+    color: rgba(0, 0, 0, 0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
 }
 
 #workspaces button.active {
@@ -60,6 +68,13 @@ button:hover {
     color: @bg1;
     background-color: @bg;
     border-radius: 5px;
+}
+
+#workspaces button.empty:hover {
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+  transition: all 1s ease;
 }
 
 #workspaces button.empty.active {
