@@ -83,10 +83,6 @@ button:hover {
     border-radius: 5px;
 }
 
-#workspaces button.urgent {
-    background-color: @red;
-}
-
 #mode {
     color: #24283b;
     padding: 0 5px;
