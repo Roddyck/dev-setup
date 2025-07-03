@@ -2,7 +2,7 @@
 
 sudo pacman -S --noconfirm nvidia-utils egl-wayland
 sudo pacman -S --noconfirm --needed hyprland swaync waybar swww hyprlock
-yay -S wlogout
+paru -S wlogout
 
 
 if [ ! -f /etc/modprobe.d/nvidia.conf ]; then

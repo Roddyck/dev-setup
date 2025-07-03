@@ -33,9 +33,9 @@ has_session() {
 
 hydrate() {
     if [ -f $2/.tmux-sessionizer ]; then
-        tmux send-keys -t "$1" "source $2/.tmux-sessionizer" ^M
+        tmux send-keys -t "$1" "source $2/.tmux-sessionizer" c-M
     elif [[ -f "$CONFIG_HYDRATE_DEFAULT"  ]]; then
-        tmux send-keys -t "$1" "source $CONFIG_HYDRATE_DEFAULT" ^M
+        tmux send-keys -t "$1" "source $CONFIG_HYDRATE_DEFAULT" c-M
     fi
 }
 
@@ -73,7 +73,13 @@ find_dirs() {
             path="$entry"
         fi
 
-        [[ -d "$path" ]] && find "$path" -mindepth 1 -maxdepth "${depth:-${TS_MAX_DEPTH:-1}}" -path '*/.git' -prune -o -type d -print
+
+        if ! command -v fd &>/dev/null; then
+            [[ -d "$path" ]] && find "$path" -mindepth 1 -maxdepth "${depth:-${TS_MAX_DEPTH:-1}}" -path '*/.git' -prune -o -type d -print
+        else
+            [[ -d "$path" ]] && fd --type d --max-depth "${depth:-${TS_MAX_DEPTH:-1}}"  --hidden --exclude .git . "$path"
+        fi
+
     done
 }
 
