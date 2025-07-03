@@ -47,12 +47,6 @@ alias vim="nvim"
 alias tmux="tmux -2"
 
 alias ls="ls --color=tty"
-alias lsa="ls -lah"
-
-alias g="git"
-alias gc="git commit"
-alias ga="git add"
-alias gst="git status"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
