@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-sudo pacman -S --noconfirm --needed git pavucontrol jq wl-clipboard grim slurp ripgrep
+sudo pacman -S --noconfirm --needed git pavucontrol jq wl-clipboard grim slurp ripgrep libnotify
