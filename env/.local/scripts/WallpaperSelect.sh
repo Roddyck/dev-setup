@@ -88,26 +88,3 @@ if pidof rofi > /dev/null; then
 fi
 
 main
-
-sleep 3 # add delay of 3 seconds for those who have slow machines
-sddm_sequoia="/usr/share/sddm/themes/sequoia_2"
-if [ -d "$sddm_sequoia" ]; then
-    notify-send -i "$iDIR/ja.png" "Set wallpaper" "as SDDM background?" \
-        -t 10000 \
-        -A "yes=Yes" \
-        -A "no=No" \
-        -h string:x-canonical-private-synchronous:wallpaper-notify
-
-    # Wait for user input using a background process
-    dbus-monitor "interface='org.freedesktop.Notifications',member='ActionInvoked'" |
-    while read -r line; do
-      if echo "$line" | grep -q "yes"; then
-      $terminal -e bash -c "echo 'Enter your password to set wallpaper as SDDM Background'; \
-      sudo cp -r $wallpaper_current '$sddm_sequoia/backgrounds/default' && \
-      notify-send -i '$iDIR/ja.png' 'SDDM' 'Background SET'"
-            break
-        elif echo "$line" | grep -q "no"; then
-            break
-        fi
-    done &
-fi
