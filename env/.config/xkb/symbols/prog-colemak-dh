@@ -1,0 +1,59 @@
+partial alphanumeric_keys
+xkb_symbols "prog-colemak-dh" {
+    name[Group1]= "English (Programming Colemak-DH)";
+
+    key <TLDE> { [       dollar,        asciitilde, dead_grave, dead_tilde      ] };
+
+    key <AE01> { [          plus,       1               ]       };
+    key <AE02> { [          bracketleft,        2               ]       };
+    key <AE03> { [          braceleft,  3       ]       };
+    key <AE04> { [          parenleft,  4               ]       };
+    key <AE05> { [          ampersand,      5               ]       };
+    key <AE06> { [          equal,  6, dead_circumflex, dead_circumflex ]   };
+    key <AE07> { [          parenright, 7       ]       };
+    key <AE08> { [          braceright, 8       ]       };
+    key <AE09> { [          bracketright,       9,  dead_grave] };
+    key <AE10> { [          asterisk,   0       ]       };
+    key <AE11> { [ minus,      underscore ]       };
+    key <AE12> { [ bar, grave,  dead_tilde] };
+
+    key <AD01> { [            q,            Q,      adiaeresis,       Adiaeresis ] };
+    key <AD02> { [            w,            W,           aring,            Aring ] };
+    key <AD03> { [            f,            F,          atilde,           Atilde ] };
+    key <AD04> { [            p,            P,          oslash,           Oslash ] };
+    key <AD05> { [            b,            B,      dead_breve,       asciitilde ] };
+    key <AD06> { [            j,            J,         dstroke,          Dstroke ] };
+    key <AD07> { [            l,            L,         lstroke,          Lstroke ] };
+    key <AD08> { [            u,            U,          uacute,           Uacute ] };
+    key <AD09> { [            y,            Y,      udiaeresis,       Udiaeresis ] };
+    key <AD10> { [    semicolon,        colon,      odiaeresis,       Odiaeresis ] };
+    key <AD11> {	[ exclam,	percent	]	};
+    key <AD12> {	[ at,	asciicircum	]	};
+    key <BKSL> { [    backslash,          bar,      asciitilde,       asciitilde ] };
+
+    key <AC01> { [            a,            A,          aacute,           Aacute ] };
+    key <AC02> { [            r,            R,      dead_grave,       asciitilde ] };
+    key <AC03> { [            s,            S,          ssharp,        0x1001e9e ] };
+    key <AC04> { [            t,            T,      dead_acute, dead_doubleacute ] };
+    key <AC05> { [            g,            G,     dead_ogonek,       asciitilde ] };
+    key <AC06> { [            m,            M,     dead_macron,       asciitilde ] };
+    key <AC07> { [            n,            N,          ntilde,           Ntilde ] };
+    key <AC08> { [            e,            E,          eacute,           Eacute ] };
+    key <AC09> { [            i,            I,          iacute,           Iacute ] };
+    key <AC10> { [            o,            O,          oacute,           Oacute ] };
+    key <AC11> { [   apostrophe,     quotedbl,          otilde,           Otilde ] };
+
+    key <AB01> { [            x,            X, dead_circumflex,       asciitilde ] };
+    key <AB02> { [            c,            C,        ccedilla,         Ccedilla ] };
+    key <AB03> { [            d,            D,  dead_diaeresis,       asciitilde ] };
+    key <AB04> { [            v,            V,              oe,               OE ] };
+    key <AB05> { [            z,            Z,              ae,               AE ] }; //Z appears here too because <LSGT> key is not present on ANSI keyboards
+    key <AB06> { [            k,            K,  dead_abovering,       asciitilde ] };
+    key <AB07> { [            h,            H,      dead_caron,       asciitilde ] };
+    key <AB08> { [        comma,         less,    dead_cedilla,       asciitilde ] };
+    key <AB09> { [       period,      greater,   dead_abovedot,       asciitilde ] };
+    key <AB10> { [        slash,     question,    questiondown,       asciitilde ] };
+
+    key <LSGT> { [            z,            Z,              ae,               AE ] };
+    key <SPCE> { [        space,        space,           space,     nobreakspace ] };
+};
