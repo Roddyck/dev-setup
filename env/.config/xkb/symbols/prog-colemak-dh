@@ -1,5 +1,6 @@
 partial alphanumeric_keys
 xkb_symbols "prog-colemak-dh" {
+    include "us"
     name[Group1]= "English (Programming Colemak-DH)";
 
     key <TLDE> { [       dollar,        asciitilde, dead_grave, dead_tilde      ] };
