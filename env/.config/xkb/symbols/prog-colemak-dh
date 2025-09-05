@@ -30,7 +30,7 @@ xkb_symbols "prog-colemak-dh" {
     key <AD10> { [    semicolon,        colon,      odiaeresis,       Odiaeresis ] };
     key <AD11> {	[ exclam,	percent	]	};
     key <AD12> {	[ at,	asciicircum	]	};
-    key <BKSL> { [    backslash,          bar,      asciitilde,       asciitilde ] };
+    key <BKSL> {	[ backslash,         numbersign	]	};
 
     key <AC01> { [            a,            A,          aacute,           Aacute ] };
     key <AC02> { [            r,            R,      dead_grave,       asciitilde ] };
