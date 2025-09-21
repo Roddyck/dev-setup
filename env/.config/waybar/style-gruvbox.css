@@ -1,10 +1,11 @@
-@import "./rose-pine.css";
+@import "./gruvbox.css";
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     border-radius: 10px;
     font-family: JetBrainsMono NFP;
     font-size: 13px;
+    margin: 2px 0px;
 }
 
 window#waybar {
@@ -44,19 +45,42 @@ button:hover {
 #workspaces button {
     margin: 0 0px;
     padding: 0 3px;
-    color: @text;
+    color: rgba(251, 73, 52, 0.4);
     background: transparent;
     border-radius: 5px;
+    transition: all .5s ease;
+}
+
+#workspaces button:hover {
+    color: rgba(0, 0, 0, 0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
 }
 
 #workspaces button.active {
-    color: @rose;
-    background-color: @pine;
+    color: @red;
+    background-color: @bg;
     border-radius: 5px;
 }
 
-#workspaces button.urgent {
-    background-color: @love;
+#workspaces button.empty {
+    color: @bg1;
+    background-color: @bg;
+    border-radius: 5px;
+}
+
+#workspaces button.empty:hover {
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+  transition: all 1s ease;
+}
+
+#workspaces button.empty.active {
+    color: @red;
+    background-color: @bg;
+    border-radius: 5px;
 }
 
 #mode {
@@ -67,17 +91,15 @@ button:hover {
 }
 
 #workspaces {
-    margin: 0px 4px;
-    background: @base;
+    margin: 0 4px;
+    background: @bg;
     border-radius: 5px;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
-    margin-left: 6px;
+    margin-left: 0.5rem;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
 }
@@ -85,34 +107,31 @@ button:hover {
 
 #clock {
     /* background-color: #2ac3de; */
-    color: #24283b;
+    color: @yellow;
     padding: 0 5px;
-    margin: 0px 0;
-    background: @pine;
-    background: linear-gradient(135deg, @rose 0%, @love 100%);
+    margin: 0 2px;
+    background: @bg;
 }
 
 #custom-icon {
     color: #24283b;
     margin-left: 6px;
     padding-left: 5px;
-    background: rgb(42,195,222);
-    background: linear-gradient(135deg, @rose 0%, @love 100%); 
+    background: @orange;
 }
 
 #mpris {
-    color: #24283b;
-    padding: 0px 5px;
-    margin: 2px 2px;
-    background: rgb(42,195,222);
-    background: linear-gradient(135deg, @rose 0%, @love 100%);
+    color: @orange;
+    padding: 0 5px;
+    margin: 0 2px;
+    background: @bg;
 }
 
 #battery {
-    background-color: @love;
-    color: #24283b;
+    background-color: @bg;
+    color: @red;
     padding: 0 5px;
-    margin: 0px 0px;
+    margin: 0 0px;
 }
 
 #custom-weather {
@@ -123,21 +142,31 @@ button:hover {
     background: rgb(255,158,100);
     background: linear-gradient(135deg, rgba(255,158,100,1) 0%, rgba(247,118,142,1) 100%);
 }
+
 #custom-notifications {
-    margin: 2px 6px;
+    margin-right: 0.5rem;
     padding: 0 0 0 1px;
-    color: #24283b;
-    background-color: @base;
+    color: @fg;
+    background-color: @bg;
     min-width: 20px;
-    background: rgb(42,195,222);
-    background: linear-gradient(135deg, @foam 0%, @iris 100%);
+    background: @bg;
+}
+
+#custom-power {
+    margin-left: 0.5rem;
+    margin-right: 2px;
+    padding: 0 0 0 1px;
+    color: @fg;
+    min-width: 20px;
+    background-color: @bg;
+    background: @bg;
 }
 
 #battery.charging, #battery.plugged {
-    color: #24283b;
-    background-color: #bb9af7;
+    color: @red;
+    background-color: @bg;
     padding: 0 5px;
-    margin: 0px 2px;
+    margin: 0 2px;
 }
 
 @keyframes blink {
@@ -164,19 +193,17 @@ label:focus {
 
 #cpu {
     background-color: #e0af68;
-    color: #24283b;
+    color: @blue;
     padding: 0 5px;
-    background: rgb(42,195,222);
-    background: linear-gradient(135deg, @pine 0%, @iris 100%);
+    background: @bg;
     margin: 0px 2px;
 }
 
 #memory {
     background-color: #2ac3de;
-    color: #24283b;
+    color: @aqua;
     padding: 0 5px;
-    background: rgb(158,206,106);
-    background: linear-gradient(135deg, @rose 0%, @love 100%);
+    background: @bg;
     margin: 0px 2px;
 }
 
@@ -202,16 +229,15 @@ label:focus {
 
 #pulseaudio {
     background-color: #2ac3de;
-    color: #24283b;
+    color: @green;
     padding: 0 5px;
     margin: 0px 2px;
-    background: rgb(247,118,142);
-    background: linear-gradient(135deg, @pine 0%, @iris 100%);
+    background: @bg;
 }
 
 #pulseaudio.muted {
-    background-color: #73daca;
-    color: #24283b;
+    background-color: @bg;
+    color: @fg;
     padding: 0 5px;
     margin: 0px 2px;
 }
@@ -234,9 +260,8 @@ label:focus {
     background-color: #2980b9;
     color: #24283b;
     padding: 0 5px;
-    margin: 0px 2px;
-    background: @pine;
-    background: linear-gradient(135deg, @iris 0%, @gold 100%);
+    margin: 0 2px;
+    background: @bg;
 }
 
 #tray > .passive {
