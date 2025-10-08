@@ -47,6 +47,8 @@ export PATH="/usr/local/go/bin:$PATH"
 export PATH="/home/roddyk/TeXmacs:$PATH"
 export PATH="/home/roddyk/.local/bin:$PATH"
 
+export MANPAGER="nvim +Man!"
+
 alias vim="nvim"
 alias tmux="tmux -2"
 
