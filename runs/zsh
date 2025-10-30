@@ -4,4 +4,5 @@ sudo pacman -S zsh
 hash -r
 sudo chsh -s $(which zsh)
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/personal/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/personal/zsh-autosuggestions
 paru -S oh-my-posh
