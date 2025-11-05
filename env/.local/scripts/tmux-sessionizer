@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/tmux-sessionizer"
 CONFIG_FILE="$CONFIG_DIR/tmux-sessionizer.conf"
-CONFIG_HYDRATE_DEFAULT="$CONFIG_DIR/tmux-sessionizer-hydrate.conf"
+CONFIG_HYDRATE_DEFAULT="$CONFIG_DIR/tmux-sessionizer-hydrate"
 
 if [[ -f "$CONFIG_FILE" ]]; then
     source "$CONFIG_FILE"
