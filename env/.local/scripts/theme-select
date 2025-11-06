@@ -17,14 +17,25 @@ apply_theme() {
     for c in $configs; do
         config_name=$(basename "$c")
         echo "Applying $config_name"
-        cp -r "$c/*" "$DEV_ENV/env/.config/$config_name"
+        cp -r "$c" "$DEV_ENV/env/.config"
     done
+}
+
+reload_env() {
+    # to reload tpm I'll still need to press prefix+I
+    dev-env
+    pkill waybar && hyprctl dispatch exec waybar
+    ghostty +validate-config
 }
 
 main() {
     choice=$(menu | $rofi_command)
+    if [ -z "$choice" ]; then
+        exit 0
+    fi
     echo $choice
     apply_theme $choice
+    reload_env
 }
 
 main
