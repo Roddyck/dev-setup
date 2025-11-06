@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+rofi_command="rofi -i -show -dmenu -config $HOME/.config/rofi/config-theme-select.rasi"
+themes_dir="$DEV_ENV/themes"
+themes=`find "$themes_dir" -mindepth 1 -maxdepth 1 -type d`
+
+menu() {
+    for theme in $themes; do
+        theme_name=$(basename "$theme")
+        printf "%s\n" "$theme_name"
+    done
+}
+
+apply_theme() {
+    theme_dir="$themes_dir/$1"
+    configs=`find "$theme_dir" -mindepth 1 -maxdepth 1 -type d`
+    for c in $configs; do
+        config_name=$(basename "$c")
+        echo "Applying $config_name"
+        cp -r "$c/*" "$DEV_ENV/env/.config/$config_name"
+    done
+}
+
+main() {
+    choice=$(menu | $rofi_command)
+    echo $choice
+    apply_theme $choice
+}
+
+main

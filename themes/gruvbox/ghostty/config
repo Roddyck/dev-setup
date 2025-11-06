@@ -1,0 +1,12 @@
+theme = Gruvbox Dark
+background-opacity = 0.70
+background = 000000
+background-blur = false
+font-family = JetBrainsMono Nerd Font
+
+shell-integration-features = no-cursor,title
+cursor-style-blink = false
+
+window-decoration = false
+
+confirm-close-surface = false
