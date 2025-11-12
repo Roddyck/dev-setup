@@ -1,16 +1,21 @@
 # Zathura configuration file
 # See man `man zathurarc'
 
-# Open document in fit-width mode by default
-set adjust-open "best-fit"
-
 # One page per row by default
 set pages-per-row 1
 
 #stop at page boundries
 set scroll-page-aware "true"
 set scroll-full-overlap 0.01
-set scroll-step 100
+set scroll-step 0.01
+
+# maps
+map r reload
+map p print
+map i recolor
+map J zoom out
+map K zoom in
+map R rotate
 
 #zoom settings
 set zoom-min 10
@@ -19,8 +24,4 @@ set guioptions ""
 # zathurarc-dark
 
 set font "inconsolata 15"
-include gruvbox-dark
-
-unmap f
-map f toggle_fullscreen
-map [fullscreen] f toggle_fullscreen
+include rose-pine
