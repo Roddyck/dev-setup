@@ -20,7 +20,7 @@
   tap-time 200
   hold-time 200
   tap-time-slow 300
-  hold-tim-slow 300
+  hold-time-slow 300
 )
  
 (defalias
@@ -35,15 +35,18 @@
   e (multi f24 (tap-hold $tap-time $hold-time e rctl))
   i (multi f24 (tap-hold $tap-time-slow $hold-time-slow i ralt))
   o (multi f24 (tap-hold $tap-time-slow $hold-time-slow o rmet))
+  ru (multi lmet y (layer-switch qwerty))
+  en (multi lmet y (layer-switch colemak-dh))
 )
+
 
 (deflayer colemak-dh
   esc        f1  f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   grv        1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab        q    w    f    p    b    j    l    u    y    ;    [    ]    \
+  tab        q    w    f    p    b    j    l    u    y ;    [    ]    \
   @escctrl   @a   @r   @s   @t   g    m    @n   @e   @i   @o   '    ret
   lsft       x    c    d    v    z    k    h    ,    .    /  rsft
-  lctl      lmet lalt          @l_symb         ralt rctl
+  lctl      lmet lalt          @spc         ralt rctl
 )
 
 (deflayer symbols
@@ -52,8 +55,16 @@
   tab        1    2    3    4    5    6    7    8    9    0    [    ]    \
   @escctrl   S-=  [    S-[  S-9  S-7  =    S-0  S-]  ]    S-8  '    ret
   lsft       S-1  S-5  S-2  S-6  S-3  k    h    ,    .    /  rsft
-  lctl      lmet lalt          @l_symb         ralt rctl
+  lctl      @ru lalt          @spc         ralt rctl
 )
 
+(deflayer qwerty
+  esc    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv    1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab    q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps   a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft   z    x    c    v    b    n    m    ,    .    /   rsft
+  lctl  @en lalt          spc         ralt rctl
+)
 
 
