@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+DEVICE_NAME="at-translated-set-2-keyboard"
+export STATUS_FILE="$XDG_RUNTIME_DIR/keyboard.status"
+
+# Check current status
+if [[ ! -f "$STATUS_FILE" ]]; then
+  # If file doesn't exist, assume enabled (or set initial state)
+  echo "true" > "$STATUS_FILE"
+fi
+
+CURRENT_STATUS=$(cat "$STATUS_FILE")
+
+if [[ "$CURRENT_STATUS" == "true" ]]; then
+  # Disable keyboard
+  notify-send "Disabling Keyboard"
+  sh -c "hyprctl keyword 'device[at-translated-set-2-keyboard]:enabled' 0"
+  echo "false" > "$STATUS_FILE"
+else
+  # Enable keyboard
+  notify-send "Enabling Keyboard"
+  sh -c "hyprctl keyword 'device[at-translated-set-2-keyboard]:enabled' 1"
+  echo "true" > "$STATUS_FILE"
+fi
