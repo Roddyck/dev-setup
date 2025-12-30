@@ -70,9 +70,44 @@ copy() {
     fi
 }
 
-update_files $DEV_ENV/env/.config $XDG_CONFIG_HOME
-update_files $DEV_ENV/env/.local $HOME/.local
+copy_keyboard() {
+    log "copying keyboard: $1 to $2"
+    pushd $2 &> /dev/null
+    target_files=`find . -mindepth 1 -maxdepth 1 -type f`
+    for f in $target_files; do
+        target_filepath=${2%/}/${f#./}
+        log "   removing: $target_filepath"
+        if [[ $dry_run == "0" ]]; then
+            rm $target_filepath
+        fi
+    done
+    popd &> /dev/null
+    pushd $1 &> /dev/null
+    source_files=`find . -mindepth 1 -maxdepth 1 -type f`
+    for f in $source_files; do
+        source_filepath=${1%/}/${f#./}
+        if [[ $(basename $source_filepath) == "README.md" || $(basename $source_filepath) == ".git" || $(basename $source_filepath) == "compile_commands.json" || $(basename $source_filepath) == ".gitignore" ]]; then
+            continue
+        fi
+        log "   copying: $source_filepath"
+        if [[ $dry_run == "0" ]]; then
+            cp $source_filepath $2
+        fi
+    done
+}
 
-copy $DEV_ENV/env/.zshenv $HOME/.zshenv
+if [[ $grep != "qmk" ]]; then
+    update_files $DEV_ENV/env/.config $XDG_CONFIG_HOME
+    update_files $DEV_ENV/env/.local $HOME/.local
 
-hyprctl reload
+    copy $DEV_ENV/env/.zshenv $HOME/.zshenv
+fi
+
+
+if [[ $grep == "qmk" ]]; then
+    copy_keyboard $DEV_ENV/qmk $HOME/qmk_firmware/keyboards/crkbd/keymaps/Roddyck
+fi
+
+if [[ $dry_run == "0" ]]; then
+    hyprctl reload
+fi
