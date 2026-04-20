@@ -13,12 +13,12 @@ CURRENT_STATUS=$(cat "$STATUS_FILE")
 
 if [[ "$CURRENT_STATUS" == "true" ]]; then
   # Disable keyboard
-  notify-send "Disabling Keyboard"
+  notify-send -e "Disabling Keyboard"
   sh -c "hyprctl keyword 'device[at-translated-set-2-keyboard]:enabled' 0"
   echo "false" > "$STATUS_FILE"
 else
   # Enable keyboard
-  notify-send "Enabling Keyboard"
+  notify-send -e "Enabling Keyboard"
   sh -c "hyprctl keyword 'device[at-translated-set-2-keyboard]:enabled' 1"
   echo "true" > "$STATUS_FILE"
 fi
