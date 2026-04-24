@@ -6,5 +6,5 @@ if [[ "$(pwd)" == $HOME/personal || "$(pwd)" == $HOME/Downloads ]]; then
 fi
 
 tmux neww -dn scratch
-vim .
+nvim .
 clear
