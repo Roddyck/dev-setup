@@ -75,6 +75,5 @@ addToPathFront $HOME/.zig
 addToPathFront $HOME/.local/share/npm/bin
 addToPathFront $HOME/.local/share/cargo/bin
 addToPathFront $GOPATH/bin
-addToPathFront $HOME/Throne
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions

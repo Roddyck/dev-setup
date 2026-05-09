@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
 
-if [[ "$(pwd)" == $HOME/personal || "$(pwd)" == $HOME/Downloads ]]; then
-    clear
-    return
-fi
+ignore_dirs=(
+    $HOME/personal
+    $HOME/Downloads
+    $HOME
+    $HOME/Throne
+)
+
+for dir in "${ignore_dirs[@]}"; do
+    if [[ "$(pwd)" == $dir ]]; then
+        clear
+        return
+    fi
+done
 
 tmux neww -dn scratch
 nvim .
