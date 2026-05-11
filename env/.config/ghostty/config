@@ -6,7 +6,8 @@ background-blur = false
 font-family = JetBrainsMono Nerd Font
 font-size = 16
 
-shell-integration-features = cursor, no-title
+shell-integration-features = no-cursor, no-title
+cursor-style-blink = false
 
 window-decoration = false
 
