@@ -1,10 +1,7 @@
 #!/bin/bash
 
 # WALLPAPERS PATH
-terminal=ghostty
-
 wallDIR="$HOME/.local/share/wallpapers"
-SCRIPTSDIR="$HOME/.config/hypr/scripts"
 
 # Directory for swaync
 iDIR="$HOME/.config/swaync/images"
@@ -34,10 +31,10 @@ rofi_command="rofi -i -show -dmenu -config ~/.config/rofi/config-wallpaper.rasi"
 menu() {
   # Sort the PICS array
   IFS=$'\n' sorted_options=($(sort <<<"${PICS[*]}"))
-  
+
   for pic_path in "${sorted_options[@]}"; do
     pic_name=$(basename "$pic_path")
-    
+
     # Displaying .gif to indicate animated images
     if [[ ! "$pic_name" =~ \.gif$ ]]; then
       printf "%s\x00icon\x1f%s\n" "$(echo "$pic_name" | cut -d. -f1)" "$pic_path"
@@ -53,7 +50,7 @@ awww query || awww-daemon --format xrgb
 # Choice of wallpapers
 main() {
   choice=$(menu | $rofi_command)
-  
+
   # Trim any potential whitespace or hidden characters
   choice=$(echo "$choice" | xargs)
   RANDOM_PIC_NAME=$(echo "$RANDOM_PIC_NAME" | xargs)
