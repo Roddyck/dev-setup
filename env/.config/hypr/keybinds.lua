@@ -13,7 +13,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 ---@param keys string key to prefix
 ---@return string key prefixed with mainMod
 local function leader(keys)
-	return mainMod .. " + " .. keys
+  return mainMod .. " + " .. keys
 end
 
 ---Return full path to script based on scriptDir
@@ -21,8 +21,8 @@ end
 ---@param args string[]? args to pass to script
 ---@return string fullpath fullpath to script with args appended
 local function script(filename, args)
-	args = args or {}
-	return string.format("%s/%s %s", scriptDir, filename, table.concat(args, " "))
+  args = args or {}
+  return string.format("%s/%s %s", scriptDir, filename, table.concat(args, " "))
 end
 
 hl.bind(leader("Return"), hl.dsp.exec_cmd(terminal))
@@ -50,9 +50,9 @@ hl.bind(leader("SHIFT + j"), hl.dsp.window.swap({ direction = "down" }))
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
-	local key = i % 10
-	hl.bind(leader(" + " .. key), hl.dsp.focus({ workspace = i }))
-	hl.bind(leader(" + SHIFT + " .. key), hl.dsp.window.move({ workspace = i }))
+  local key = i % 10
+  hl.bind(leader(tostring(key)), hl.dsp.focus({ workspace = i }))
+  hl.bind(leader("SHIFT + " .. key), hl.dsp.window.move({ workspace = i }))
 end
 
 -- Example special workspace (scratchpad)
@@ -72,46 +72,46 @@ hl.bind(leader("r"), hl.dsp.submap("resize"))
 
 -- Start a submap called "resize".
 hl.define_submap("resize", function()
-	-- Set repeating binds for resizing the active window.
-	hl.bind("l", hl.dsp.window.resize({ x = 10, y = 0, relative = true }), { repeating = true })
-	hl.bind("h", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
-	hl.bind("k", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
-	hl.bind("j", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
+  -- Set repeating binds for resizing the active window.
+  hl.bind("l", hl.dsp.window.resize({ x = 10, y = 0, relative = true }), { repeating = true })
+  hl.bind("h", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
+  hl.bind("k", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
+  hl.bind("j", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
 
-	-- Use `reset` to go back to the global submap
-	hl.bind("escape", hl.dsp.submap("reset"))
+  -- Use `reset` to go back to the global submap
+  hl.bind("escape", hl.dsp.submap("reset"))
 end)
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
-	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
-	{ locked = true, repeating = true }
+  "XF86AudioRaiseVolume",
+  hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+  { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
-	{ locked = true, repeating = true }
+  "XF86AudioLowerVolume",
+  hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+  { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
-	{ locked = true, repeating = true }
+  "XF86AudioMute",
+  hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+  { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioMicMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
-	{ locked = true, repeating = true }
+  "XF86AudioMicMute",
+  hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+  { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86MonBrightnessUp",
-	hl.dsp.exec_cmd(script("brightness-change", { "--inc" })),
-	{ locked = true, repeating = true }
+  "XF86MonBrightnessUp",
+  hl.dsp.exec_cmd(script("brightness-change", { "--inc" })),
+  { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86MonBrightnessDown",
-	hl.dsp.exec_cmd(script("brightness-change", { "--dec" })),
-	{ locked = true, repeating = true }
+  "XF86MonBrightnessDown",
+  hl.dsp.exec_cmd(script("brightness-change", { "--dec" })),
+  { locked = true, repeating = true }
 )
 
 -- Requires playerctl
@@ -132,8 +132,8 @@ hl.bind(leader("SHIFT + P"), hl.dsp.exec_cmd(script("Wlogout.sh")))
 
 -- Screenshots
 hl.bind(
-	"Print",
-	hl.dsp.exec_cmd('grim - | satty -f - --copy-command wl-copy -o "~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png"')
+  "Print",
+  hl.dsp.exec_cmd('grim - | satty -f - --copy-command wl-copy -o "~/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png"')
 )
 
 -- hl.bind("Print", hl.dsp.exec_cmd(script("screenshot", {})))
@@ -147,41 +147,26 @@ hl.bind(
 
 -- toggle pretty stuff
 hl.bind(leader("SHIFT + A"), function()
-	local animations_on = hl.get_config("animations.enabled")
+  local game_mode = (hl.get_config("animations.enabled") == false)
 
-	local restore_options = {
-		animations = { enabled = true },
-		general = {
-			gaps_in = 4,
-			gaps_out = 6,
-			border_size = 2,
-		},
-		decoration = {
-			shadow = { enabled = true },
-			blur = { enabled = true },
-			rounding = 10,
-		},
-	}
+  if game_mode then
+    hl.exec_cmd("hyprctl reload")
+    return
+  end
 
-	local set_options = {
-		animations = { enabled = false },
-		general = {
-			gaps_in = 0,
-			gaps_out = 0,
-			border_size = 1,
-		},
-		decoration = {
-			shadow = { enabled = false },
-			blur = { enabled = false },
-			rounding = 0,
-		},
-	}
-
-	if animations_on then
-		hl.config(set_options)
-	else
-		hl.config(restore_options)
-	end
+  hl.config({
+    animations = { enabled = false },
+    general = {
+      gaps_in = 0,
+      gaps_out = 0,
+      border_size = 0,
+    },
+    decoration = {
+      shadow = { enabled = false },
+      blur = { enabled = false },
+      rounding = 0,
+    },
+  })
 end)
 
 -- toggle enable laptop keyboard
@@ -189,20 +174,20 @@ local keyboard_on = true
 local keyboard_name = "at-translated-set-2-keyboard"
 
 hl.bind(leader("SHIFT + C"), function()
-	if keyboard_on then
-		hl.device({
-			name = keyboard_name,
-			enabled = false,
-		})
-		hl.exec_cmd('notify-send -e "Keyboard disabled"')
-	else
-		hl.device({
-			name = keyboard_name,
-			enabled = true,
-		})
+  if keyboard_on then
+    hl.device({
+      name = keyboard_name,
+      enabled = false,
+    })
+    hl.exec_cmd('notify-send -e "Keyboard disabled"')
+  else
+    hl.device({
+      name = keyboard_name,
+      enabled = true,
+    })
 
-		hl.exec_cmd('notify-send -e "Keyboard enabled"')
-	end
+    hl.exec_cmd('notify-send -e "Keyboard enabled"')
+  end
 
-	keyboard_on = not keyboard_on
+  keyboard_on = not keyboard_on
 end)

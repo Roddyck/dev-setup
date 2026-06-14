@@ -108,6 +108,7 @@ if [[ $grep == "qmk" ]]; then
     copy_keyboard $DEV_ENV/qmk $HOME/qmk_firmware/keyboards/crkbd/keymaps/Roddyck
 fi
 
-if [[ $dry_run == "0" ]]; then
+if [[ $grep == "hypr" || $grep == "" ]]; then
     hyprctl reload
 fi
+

@@ -1,7 +1,7 @@
 -----------------------
 ---- LOOK AND FEEL ----
 -----------------------
-local colors = require("gruvbox")
+local colors = require("rose-pine")
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
@@ -13,8 +13,8 @@ hl.config({
 
     -- https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
     col = {
-      active_border = { colors = { colors.orange, colors.red }, angle = 45 },
-      inactive_border = colors.gray,
+      active_border = { colors = { colors.rose, colors.love }, angle = 45 },
+      inactive_border = colors.muted,
     },
 
     -- Set to true enable resizing windows by clicking and dragging on borders and gaps

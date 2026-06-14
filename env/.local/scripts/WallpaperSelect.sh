@@ -13,7 +13,6 @@ focused_monitor=$(hyprctl monitors | awk '/^Monitor/{name=$2} /focused: yes/{pri
 FPS=60
 TYPE="any"
 DURATION=2
-BEZIER=".43,1.19,1,.4"
 AWWW_PARAMS="--resize fit --transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION"
 
 # Check if swaybg is running
@@ -53,7 +52,6 @@ main() {
 
   # Trim any potential whitespace or hidden characters
   choice=$(echo "$choice" | xargs)
-  RANDOM_PIC_NAME=$(echo "$RANDOM_PIC_NAME" | xargs)
 
   # No choice case
   if [[ -z "$choice" ]]; then
@@ -64,8 +62,9 @@ main() {
   # Find the index of the selected file
   pic_index=-1
   for i in "${!PICS[@]}"; do
-    filename=$(basename "${PICS[$i]}")
-    if [[ "$filename" == "$choice"* ]]; then
+    filename=$(basename "${PICS[$i]%.*}")
+    if [[ "$filename" == "$choice" ]]; then
+      echo "Found pic $filename at index $i"
       pic_index=$i
       break
     fi

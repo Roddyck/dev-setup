@@ -95,42 +95,38 @@ button:hover {
 
 #clock {
     /* background-color: #2ac3de; */
-    color: #24283b;
+    color: @gold;
     padding: 0 5px;
     margin: 0px 0;
-    background: @pine;
-    background: linear-gradient(135deg, @rose 0%, @love 100%);
+    background: @base;
 }
 
 #custom-icon {
-    color: #24283b;
+    color: @text;
     margin-left: 6px;
     padding-left: 5px;
-    background: rgb(42,195,222);
-    background: linear-gradient(135deg, @rose 0%, @love 100%); 
+    background: @base;
 }
 
 #custom-power {
     margin-left: 0.5rem;
     margin-right: 2px;
     padding: 0 0 0 2px;
-    color: #24283b;
+    color: @text;
     min-width: 20px;
-    background-color: @rose;
-    background: @rose;
+    background: @base;
 }
 
 #mpris {
-    color: #24283b;
+    color: @love;
     padding: 0px 5px;
     margin: 2px 2px;
-    background: rgb(42,195,222);
-    background: linear-gradient(135deg, @rose 0%, @love 100%);
+    background: @base;
 }
 
 #battery {
-    background-color: @love;
-    color: #24283b;
+    background-color: @base;
+    color: @pine;
     padding: 0 5px;
     margin: 0px 0px;
 }
@@ -146,11 +142,9 @@ button:hover {
 #custom-notifications {
     margin: 2px 6px;
     padding: 0 0 0 1px;
-    color: #24283b;
+    color: @text;
     background-color: @base;
     min-width: 20px;
-    background: rgb(42,195,222);
-    background: linear-gradient(135deg, @foam 0%, @iris 100%);
 }
 
 #battery.charging, #battery.plugged {
@@ -183,20 +177,16 @@ label:focus {
 }
 
 #cpu {
-    background-color: #e0af68;
-    color: #24283b;
+    color: @foam;
     padding: 0 5px;
-    background: rgb(42,195,222);
-    background: linear-gradient(135deg, @pine 0%, @iris 100%);
+    background: @base;
     margin: 0px 2px;
 }
 
 #memory {
-    background-color: #2ac3de;
-    color: #24283b;
+    color: @rose;
     padding: 0 5px;
-    background: rgb(158,206,106);
-    background: linear-gradient(135deg, @rose 0%, @love 100%);
+    background: @base;
     margin: 0px 2px;
 }
 
@@ -207,30 +197,25 @@ label:focus {
 }
 
 #network {
-    background-color: #bb9af7;
     color: #24283b;
     padding: 0 2px;
     margin: 0 2px;
-    background: rgb(187,154,247);
-    background: linear-gradient(135deg, rgba(187,154,247,1) 0%, rgba(115,218,202,1) 100%);
 }
 
 #network.disconnected {
-    background-color: #f7768e;
+    background: @base;
     color: #24283b;
 }
 
 #pulseaudio {
-    background-color: #2ac3de;
-    color: #24283b;
+    color: @love;
     padding: 0 5px;
     margin: 0px 2px;
-    background: rgb(247,118,142);
-    background: linear-gradient(135deg, @pine 0%, @iris 100%);
+    background: @base;
 }
 
 #pulseaudio.muted {
-    background-color: #73daca;
+    background: @base;
     color: #24283b;
     padding: 0 5px;
     margin: 0px 2px;
@@ -251,12 +236,10 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
     color: #24283b;
     padding: 0 5px;
     margin: 0px 2px;
-    background: @pine;
-    background: linear-gradient(135deg, @iris 0%, @gold 100%);
+    background: @base;
 }
 
 #tray > .passive {

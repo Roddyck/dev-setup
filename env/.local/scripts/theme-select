@@ -4,6 +4,11 @@ rofi_command="rofi -i -show -dmenu -config $HOME/.config/rofi/config-theme-selec
 themes_dir="$DEV_ENV/themes"
 themes=`find "$themes_dir" -mindepth 1 -maxdepth 1 -type d`
 
+FPS=60
+TYPE="any"
+DURATION=2
+AWWW_PARAMS="--resize fit --transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION"
+
 menu() {
     for theme in $themes; do
         theme_name=$(basename "$theme")
@@ -24,7 +29,8 @@ apply_theme() {
 reload_env() {
     # to reload tpm I'll still need to press prefix+I
     dev-env
-    pkill waybar && hyprctl dispatch exec waybar
+    pkill waybar && hyprctl dispatch 'hl.dsp.exec_cmd("waybar")'
+    pkill swaync && hyprctl dispatch 'hl.dsp.exec_cmd("swaync")'
     ghostty +validate-config
 }
 
@@ -34,6 +40,11 @@ main() {
         exit 0
     fi
     echo $choice
+    if [[ "$choice" == "rose-pine" ]]; then
+        awww img $HOME/.local/share/wallpapers/rose-pine-love.png $AWWW_PARAMS
+    elif [[ "$choice" == "gruvbox" ]]; then
+        awww img $HOME/.local/share/wallpapers/anime_skull.png $AWWW_PARAMS
+    fi
     apply_theme $choice
     reload_env
 }

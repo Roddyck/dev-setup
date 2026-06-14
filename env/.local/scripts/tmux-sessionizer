@@ -98,7 +98,7 @@ find_dirs() {
         if ! command -v fd &>/dev/null; then
             [[ -d "$path" ]] && find "$path" -mindepth 1 -maxdepth "${depth:-${TS_MAX_DEPTH:-1}}" -path '*/.git' -prune -o -type d -print
         else
-            [[ -d "$path" ]] && fd --type d --max-depth "${depth:-${TS_MAX_DEPTH:-1}}"  --hidden --exclude .git . "$path" | sed 's/\/$//'
+            [[ -d "$path" ]] && fd --type d --max-depth "${depth:-${TS_MAX_DEPTH:-1}}" --hidden --exclude .git . "$path" | sed 's/\/$//'
         fi
 
     done

@@ -3,8 +3,8 @@ autoload -U colors && colors
 source ~/.zshenv
 
 # History in cache directory:
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 
 HISTFILE="$XDG_STATE_HOME"/zsh/history
 
@@ -44,14 +44,17 @@ bindkey -v '^?' backward-delete-char
 # ENV
 export PATH="/home/roddyk/.local/scripts:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
-export PATH="/home/roddyk/TeXmacs:$PATH"
 export PATH="/home/roddyk/.local/bin:$PATH"
 
 export MANPAGER="nvim +Man!"
 
 alias tmux="tmux -2"
 
-alias ls="ls --color=tty"
+alias ls="ls --color=tty --group-directories-first"
+alias ll="ls -al"
+
+alias gs="git status"
+alias gadd="git add ."
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
