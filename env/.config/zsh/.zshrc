@@ -6,8 +6,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 source ~/.config/zsh/.zsh_profile
-source $HOME/personal/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/personal/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source $HOME/personal/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/personal/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source $HOME/personal/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 . "/home/roddyk/.deno/env"
 eval "$(opam env)"
 source ~/personal/powerlevel10k/powerlevel10k.zsh-theme

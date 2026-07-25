@@ -2,18 +2,11 @@
 ---- KEYBINDINGS ----
 ---------------------
 
-local terminal = "ghostty"
-local fileManager = "dolphin"
-local menu = "rofi -show drun -modi drun,filebrowser,run,window"
-local scriptDir = "$HOME/.local/scripts"
-
-local mainMod = "SUPER" -- Sets "Windows" key as main modifier
-
 ---Prefix keys with mainMod
 ---@param keys string key to prefix
 ---@return string key prefixed with mainMod
 local function leader(keys)
-  return mainMod .. " + " .. keys
+  return MAIN_MOD .. " + " .. keys
 end
 
 ---Return full path to script based on scriptDir
@@ -22,17 +15,17 @@ end
 ---@return string fullpath fullpath to script with args appended
 local function script(filename, args)
   args = args or {}
-  return string.format("%s/%s %s", scriptDir, filename, table.concat(args, " "))
+  return string.format("%s/%s %s", SCRIPT_DIR, filename, table.concat(args, " "))
 end
 
-hl.bind(leader("Return"), hl.dsp.exec_cmd(terminal))
+hl.bind(leader("Return"), hl.dsp.exec_cmd(TERMINAL))
 hl.bind(leader("q"), hl.dsp.window.close())
-hl.bind(leader("d"), hl.dsp.exec_cmd(menu))
+hl.bind(leader("d"), hl.dsp.exec_cmd(MENU))
 hl.bind(leader("v"), hl.dsp.window.float({ action = "toggle" }))
 hl.bind(leader("SHIFT + V"), hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(leader("P"), hl.dsp.window.pseudo())
 hl.bind(leader("Y"), hl.dsp.exec_cmd("hyprctl switchxkblayout current next"))
-hl.bind(leader("m"), hl.dsp.exec_cmd(fileManager))
+hl.bind(leader("m"), hl.dsp.exec_cmd(FILE_MANAGER))
 hl.bind(leader("f"), hl.dsp.window.fullscreen())
 
 -- Move focus
@@ -60,8 +53,8 @@ hl.bind(leader("S"), hl.dsp.workspace.toggle_special("magic"))
 hl.bind(leader("SHIFT + S"), hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
-hl.bind(leader("mouse_down"), hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(leader("mouse_up"), hl.dsp.focus({ workspace = "e-1" }))
+-- hl.bind(leader("mouse_down"), hl.dsp.focus({ workspace = "e+1" }))
+-- hl.bind(leader("mouse_up"), hl.dsp.focus({ workspace = "e-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(leader("mouse:272"), hl.dsp.window.drag(), { mouse = true })
@@ -190,4 +183,38 @@ hl.bind(leader("SHIFT + C"), function()
   end
 
   keyboard_on = not keyboard_on
+end)
+
+local MAX_ZOOM = 5
+local MIN_ZOOM = 1
+local ZOOM_TOGGLE_FACTOR = 1.5
+
+local function zoom(offset)
+  local current = hl.get_config("cursor.zoom_factor")
+
+  if offset ~= nil then
+    current = current + offset
+  elseif current ~= MIN_ZOOM then
+    current = MIN_ZOOM
+  else
+    current = ZOOM_TOGGLE_FACTOR
+  end
+
+  current = math.max(MIN_ZOOM, math.min(MAX_ZOOM, current))
+  hl.config({ cursor = { zoom_factor = current } })
+end
+
+hl.bind(leader("Z"), zoom)
+hl.bind(leader("SHIFT + equal"), function()
+  zoom(0.5)
+end)
+hl.bind(leader("minus"), function()
+  zoom(-0.5)
+end)
+
+hl.bind(leader("mouse_up"), function()
+  zoom(-0.5)
+end)
+hl.bind(leader("mouse_down"), function()
+  zoom(0.5)
 end)

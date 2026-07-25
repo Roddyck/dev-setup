@@ -51,7 +51,7 @@ export MANPAGER="nvim +Man!"
 alias tmux="tmux -2"
 
 alias ls="ls --color=tty --group-directories-first"
-alias ll="ls -al"
+alias ll="ls -lah"
 
 alias gs="git status"
 alias gadd="git add ."

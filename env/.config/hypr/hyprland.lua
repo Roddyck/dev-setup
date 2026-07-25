@@ -1,3 +1,10 @@
+TERMINAL = "ghostty"
+FILE_MANAGER = "dolphin"
+MENU = "rofi -show drun -modi drun,filebrowser,run,window"
+SCRIPT_DIR = "$HOME/.local/scripts"
+
+MAIN_MOD = "SUPER" -- Sets "Windows" key as main modifier
+
 require("monitors")
 require("autostart")
 require("env")
