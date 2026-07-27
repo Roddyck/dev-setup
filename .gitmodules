@@ -1,5 +1,5 @@
 [submodule "env/.config/nvim"]
-	path = env/.config/nvim
+	path = .config/nvim
 	url = git@github.com:Roddyck/config.nvim.git
 [submodule "qmk"]
 	path = qmk

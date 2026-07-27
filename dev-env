@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
+
+set -e
+
 dry_run="0"
-grep=""
+force="0"
+
+SCRIPT_DIR="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
 
 if [ -z "$XDG_CONFIG_HOME" ]; then
     echo "XDG_CONFIG_HOME is not set"
@@ -8,17 +13,15 @@ if [ -z "$XDG_CONFIG_HOME" ]; then
     XDG_CONFIG_HOME=$HOME/.config
 fi
 
-if [ -z $DEV_ENV ]; then
-    echo "enviroment variable DEV_ENV needs to be present"
-    exit 1
-fi
 
 while [[ $# -gt 0 ]]; do
     echo "ARG: $1"
     if [[ $1 == "--dry" ]]; then
         dry_run="1"
+        echo "dry run: $dry_run"
     else
-        grep="$1"
+        force="1"
+        echo "force: $force"
     fi
     shift
 done
@@ -31,84 +34,44 @@ log(){
     fi
 }
 
-log "env: $DEV_ENV"
-log "grep: $grep"
-
-update_files() {
-    log "copying over files from: $1"
-
-    pushd $1 &> /dev/null
-    configs=`find . -mindepth 1 -maxdepth 1 -type d`
-    for c in $configs; do
-        if basename $c | grep -vq "$grep"; then
-            log "grep $grep filtered out $c"
-            continue
-        fi
-        directory=${2%/}/${c#./}
-        log "   removing: rm -rf $directory"
-
-        if [[ $dry_run == "0" ]]; then
-            rm -rf $directory
-        fi
-
-        log "   copying env: cp $c $2"
-        if [[ $dry_run == "0" ]]; then
-            cp -r $c $2
-        fi
-    done
-    popd &> /dev/null
-}
-
-copy() {
-    log "removing: $2"
-    if [[ $dry_run == "0" ]]; then
-        rm $2
+create_symlink() {
+    log "linking: $1 to $2"
+    if [[ -L $2 ]]; then
+        log "   $2 already symlinked"
+        return
     fi
-    log "copying: $1 to $2"
+
+    if [[ -e $2 ]]; then
+        if [[ $force == "0" ]]; then
+            log "   file exists: $2. Use --force to overwrite"
+            exit 1
+        else
+            log "   overwriting: $2"
+            log "   rm -r $2"
+            if [[ $dry_run == "0" ]]; then
+                rm -r $2
+            fi
+        fi
+    fi
+
+    log "   ln -s $1 $2"
     if [[ $dry_run == "0" ]]; then
-        cp $1 $2
+        ln -s $1 $2
     fi
 }
 
-copy_keyboard() {
-    log "copying keyboard: $1 to $2"
-    pushd $2 &> /dev/null
-    target_files=`find . -mindepth 1 -maxdepth 1 -type f`
-    for f in $target_files; do
-        target_filepath=${2%/}/${f#./}
-        log "   removing: $target_filepath"
+link_subdirs() {
+    subdirs=`find $1 -mindepth 1 -maxdepth 1 -type d`
+    for d in $subdirs; do
+        dest="$2/$(basename $d)"
+
         if [[ $dry_run == "0" ]]; then
-            rm $target_filepath
-        fi
-    done
-    popd &> /dev/null
-    pushd $1 &> /dev/null
-    source_files=`find . -mindepth 1 -maxdepth 1 -type f`
-    for f in $source_files; do
-        source_filepath=${1%/}/${f#./}
-        if [[ $(basename $source_filepath) == "README.md" || $(basename $source_filepath) == ".git" || $(basename $source_filepath) == "compile_commands.json" || $(basename $source_filepath) == ".gitignore" ]]; then
-            continue
-        fi
-        log "   copying: $source_filepath"
-        if [[ $dry_run == "0" ]]; then
-            cp $source_filepath $2
+            create_symlink $d $dest
         fi
     done
 }
 
-if [[ $grep != "qmk" ]]; then
-    update_files $DEV_ENV/env/.config $XDG_CONFIG_HOME
-    update_files $DEV_ENV/env/.local $HOME/.local
-
-    copy $DEV_ENV/env/.zshenv $HOME/.zshenv
-fi
-
-
-if [[ $grep == "qmk" ]]; then
-    copy_keyboard $DEV_ENV/qmk $HOME/qmk_firmware/keyboards/crkbd/keymaps/Roddyck
-fi
-
-if [[ $grep == "hypr" || $grep == "" ]]; then
-    hyprctl reload
-fi
-
+link_subdirs $SCRIPT_DIR/.config $XDG_CONFIG_HOME
+link_subdirs $SCRIPT_DIR/.local $HOME/.local
+create_symlink $SCRIPT_DIR/qmk $HOME/qmk_firmware/keyboards/crkbd/keymaps/Roddyck
+create_symlink $SCRIPT_DIR/.zshenv $HOME/.zshenv

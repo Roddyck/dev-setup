@@ -17,6 +17,3 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export N_PREFIX=$XDG_DATA_HOME/n
 
 . "$CARGO_HOME/env"
-
-# Some other stuff
-export DEV_ENV=$HOME/personal/dev
