@@ -114,14 +114,14 @@ hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tru
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
 -- Execute wallpaper selector
-hl.bind(leader("W"), hl.dsp.exec_cmd(script("WallpaperSelect.sh")))
+hl.bind(leader("W"), hl.dsp.exec_cmd(script("wallpaper-select")))
 
 -- Web search
 hl.bind(leader("SHIFT + B"), hl.dsp.exec_cmd(script("rofi-search")))
 hl.bind(leader("B"), hl.dsp.exec_cmd("zen-browser"))
 
 -- wlogout
-hl.bind(leader("SHIFT + P"), hl.dsp.exec_cmd(script("Wlogout.sh")))
+hl.bind(leader("SHIFT + P"), hl.dsp.exec_cmd(script("show-wlogout")))
 
 -- Screenshots
 hl.bind(

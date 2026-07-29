@@ -1,13 +1,13 @@
 -----------------------
 ---- LOOK AND FEEL ----
 -----------------------
-local colors = require("gruvbox")
+local colors = require("modules.gruvbox")
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
   general = {
-    gaps_in = 4,
-    gaps_out = 6,
+    gaps_in = 6,
+    gaps_out = 12,
 
     border_size = 2,
 
@@ -45,7 +45,7 @@ hl.config({
     -- https://wiki.hyprland.org/Configuring/Variables/#blur
     blur = {
       enabled = true,
-      size = 5,
+      size = 8,
       passes = 2,
       ignore_opacity = true,
       new_optimizations = true,

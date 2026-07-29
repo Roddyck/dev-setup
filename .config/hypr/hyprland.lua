@@ -5,14 +5,15 @@ SCRIPT_DIR = "$HOME/.local/scripts"
 
 MAIN_MOD = "SUPER" -- Sets "Windows" key as main modifier
 
-require("monitors")
-require("autostart")
-require("env")
-require("keybinds")
-require("decorations")
-require("settings")
+require("modules.monitors")
+require("modules.autostart")
+require("modules.env")
+require("modules.keybinds")
+require("modules.decorations")
+require("modules.settings")
+require("modules.window-rules")
+-- require("animations.ml4w-fast")
 require("animations.default")
-require("window-rules")
 
 -----------------------
 ----- PERMISSIONS -----
