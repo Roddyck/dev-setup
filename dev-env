@@ -18,7 +18,7 @@ while [[ $# -gt 0 ]]; do
     if [[ $1 == "--dry" ]]; then
         dry_run="1"
         echo "dry run: $dry_run"
-    else
+    elif [[ $1 == "--force" ]]; then
         force="1"
         echo "force: $force"
     fi

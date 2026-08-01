@@ -1,6 +1,6 @@
 # Dotfiles and scripts for managing them
 
-Includes my personal dotfiles in `env/.config` and local scripts in `env/.local`
+My personal dotfiles managed with custom scripts.
 
 ## Clone repo
 
@@ -8,28 +8,23 @@ Includes my personal dotfiles in `env/.config` and local scripts in `env/.local`
 git clone https://github.com/Roddyck/dev-setup.git
 ```
 
-## Copy config files and scripts
-
-`dev-env` script will copy or update files from `env`. Needs `$DEV_EVN` 
-environment variable to be set to the path to this directory.
-
-You can optionally pass argument to the script to specify which config to copy
-or update.
-
-```bash
-DEV_ENV=PATH_TO_THIS_DIR_ON_YOUR_SYSTEM ./dev-env [config_name]
-```
-
 ## Install packages
 
-to install all packages run the `run` script (requires paru to be installed).
-It runs all scripts in `runs/` directory and logs stuff to terminal
+Repo contains a `run` script that runs one or all of the scripts in the `runs` directory.
+Each script installs (if not already installed) neccesary (for me) packages and might also do some configuration.
 
-You can optionally pass argument to the script to specify which script to run
-
-For now you need to run zsh script first and reload your shell to properly set
-xdg style paths for stuff like rust, node, etc.
+Requires [pacman](https://wiki.archlinux.org/title/Pacman) and [paru](https://github.com/Morganamilo/paru) to be present.
 
 ```bash
-./run [script_name]
+./run # runs all scripts
+./run [script_name] # runs a single script
+
+# for example:
+./run neovim # will run neovim script that installs neovim, lua, lua lsp (see `runs/neovim`)
 ```
+
+## Symlinking
+
+`dev-env` script creates symlinks for subdirectories in `.config` and `.local` as well symlinks `qmk` configs
+and `.zshenv` file (see the script for more details). Can accept `--force` flag to overwrite existing files.
+Be careful with this as it will `rm -r` existing configurations.
